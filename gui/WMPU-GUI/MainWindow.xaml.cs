@@ -254,14 +254,27 @@ namespace WMPU_GUI
 
             dir = wemodDirectory == null ? GetDefaultWeModDir() : wemodDirectory.Path;
 
-            var process = new Process();
-
             var wandExe = Path.Combine(dir, "Wand.exe");
             var wemodExe = Path.Combine(dir, "WeMod.exe");
-            process.StartInfo.FileName = File.Exists(wandExe) ? wandExe : wemodExe;
-            process.Start();
+            var exePath = File.Exists(wandExe) ? wandExe : wemodExe;
 
-            Window.Current.Close();
+            try
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = exePath,
+                    WorkingDirectory = dir,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                Alert("Failed to launch", ex.Message);
+                return;
+            }
+
+            this.Close();
         }
     }
 }
