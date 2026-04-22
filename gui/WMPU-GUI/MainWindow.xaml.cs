@@ -72,31 +72,37 @@ namespace WMPU_GUI
         }
 
 
+        private string GetDefaultWeModDir()
+        {
+            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var wand = Path.Combine(localAppData, "Wand");
+            if (Directory.Exists(wand)) return wand;
+            return Path.Combine(localAppData, "WeMod");
+        }
+
         public void OnWeModFolderUpdate()
         {
             wemodVersionCombo.Items.Clear();
 
-            string dir;
+            string dir = wemodDirectory == null ? GetDefaultWeModDir() : wemodDirectory.Path;
 
-            if(wemodDirectory == null)
+            if (!Directory.Exists(dir))
             {
-                dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\WeMod";
-            } else
-            {
-                dir = wemodDirectory.Path;
+                wemodVersionCombo.SelectedIndex = -1;
+                return;
             }
 
             var versionDirs = new DirectoryInfo(dir)
                 .EnumerateDirectories()
-                .Where(dir => dir.Name.StartsWith("app-"))
+                .Where(d => d.Name.StartsWith("app-"))
                 .ToList();
 
             wemodVersionCombo.SelectedIndex = versionDirs.Count - 1;
 
             versionDirs
-                .ForEach(dir =>
+                .ForEach(d =>
             {
-                var version = dir.Name.Substring(4);
+                var version = d.Name.Substring(4);
 
                 wemodVersionCombo.Items.Add(version);
             });
@@ -192,14 +198,7 @@ namespace WMPU_GUI
         {
             string dir;
 
-            if (wemodDirectory == null)
-            {
-                dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\WeMod";
-            }
-            else
-            {
-                dir = wemodDirectory.Path;
-            }
+            dir = wemodDirectory == null ? GetDefaultWeModDir() : wemodDirectory.Path;
 
             unlockBtn.IsEnabled = false;
             unlockingRing.IsActive = true;
@@ -253,18 +252,13 @@ namespace WMPU_GUI
         {
             string dir;
 
-            if (wemodDirectory == null)
-            {
-                dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\WeMod";
-            }
-            else
-            {
-                dir = wemodDirectory.Path;
-            }
+            dir = wemodDirectory == null ? GetDefaultWeModDir() : wemodDirectory.Path;
 
             var process = new Process();
 
-            process.StartInfo.FileName = dir + @"\WeMod.exe";
+            var wandExe = Path.Combine(dir, "Wand.exe");
+            var wemodExe = Path.Combine(dir, "WeMod.exe");
+            process.StartInfo.FileName = File.Exists(wandExe) ? wandExe : wemodExe;
             process.Start();
 
             Window.Current.Close();

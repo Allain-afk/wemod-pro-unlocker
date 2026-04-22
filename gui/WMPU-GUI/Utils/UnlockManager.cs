@@ -38,7 +38,7 @@ namespace WMPU_GUI.Utils
         public void KillWeMod()
         {
             var wemodProcesses = Process.GetProcesses().
-                Where(pr => pr.ProcessName.ToLower() == "wemod");
+                Where(pr => { var n = pr.ProcessName.ToLower(); return n == "wemod" || n == "wand"; });
 
             foreach (var process in wemodProcesses)
             {
