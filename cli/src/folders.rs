@@ -9,7 +9,11 @@ pub fn get_wemod_folder() -> PathBuf {
     let local_app_data =
         known_folder_path(FolderId::LocalAppData).expect("Local app data could not be found.");
 
-    return local_app_data.join("WeMod");
+    let wand = local_app_data.join("Wand");
+    if wand.exists() {
+        return wand;
+    }
+    local_app_data.join("WeMod")
 }
 
 pub fn get_latest_app_dir(wemod_dir: PathBuf) -> std::io::Result<PathBuf> {
