@@ -79,7 +79,7 @@ pub fn patch_index_js(extracted_resource_dir: PathBuf) {
 
     let index_js_contents = fs::read_to_string(&index_js)
         .expect("failed to read index.js")
-        .replace("if(d.devMode)", "if(process.argv.includes('-dev'))");
+        .replace("if(p.devMode)", "if(process.argv.includes('-dev'))");
 
     fs::write(index_js, index_js_contents).expect("failed to write index.js");
 }
