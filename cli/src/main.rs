@@ -11,6 +11,7 @@ mod files;
 mod folders;
 mod fuse;
 mod patches;
+mod processes;
 mod updates;
 mod versions;
 
@@ -104,6 +105,10 @@ fn main() -> std::io::Result<()> {
         "Attempting to patch WeMod v{}...",
         versions::get_version_from_path(wemod_version_folder)
     );
+
+    println!("Stopping running WeMod/Wand processes...");
+    processes::kill_wemod_processes();
+    println!("Done.");
 
     println!("Extracting resources...");
 
