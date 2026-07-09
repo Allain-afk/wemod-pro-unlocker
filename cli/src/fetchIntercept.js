@@ -13,7 +13,7 @@ if ("application/json" === e.headers.get("Content-Type")) {
       },
       ...{
         /*{%account%}*/
-        username: '🔓Allain Pro WeMod'
+        username: '🔓WeMod Pro'
       }
     }
   }
