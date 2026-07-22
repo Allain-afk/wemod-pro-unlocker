@@ -8,7 +8,7 @@ use version_compare::Cmp;
 use crate::files::extract_temp_file;
 
 fn get_latest_release() -> Option<serde_json::Value> {
-    let request_url = "https://api.github.com/repos/bennett-sh/wemod-pro-unlocker/releases/latest";
+    let request_url = "https://api.github.com/repos/Allain-afk/wemod-pro-unlocker/releases/latest";
     let request = minreq::Request::new(minreq::Method::Get, request_url)
         .with_header("User-Agent", "wmpu-cli");
 
