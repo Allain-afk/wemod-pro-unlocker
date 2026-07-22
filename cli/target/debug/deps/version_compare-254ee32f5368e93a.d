@@ -1,0 +1,10 @@
+C:\PythonProjects\wemod-pro-checker\cli\target\debug\deps\version_compare-254ee32f5368e93a.d: C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\lib.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\cmp.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\compare.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\manifest.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\part.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\version.rs
+
+C:\PythonProjects\wemod-pro-checker\cli\target\debug\deps\libversion_compare-254ee32f5368e93a.rmeta: C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\lib.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\cmp.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\compare.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\manifest.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\part.rs C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\version.rs
+
+C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\lib.rs:
+C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\cmp.rs:
+C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\compare.rs:
+C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\manifest.rs:
+C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\part.rs:
+C:\Users\Allain\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\version-compare-0.1.0\src\version.rs:
