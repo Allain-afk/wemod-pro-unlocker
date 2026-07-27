@@ -5,6 +5,17 @@
   <p>Unlocks WeMod Pro functionality locally with lightweight Rust & Go binaries.</p>
 </div>
 
+## 🚀 Quick Start (Download Executables Directly)
+
+You do **not** need to build from source! Pre-compiled, standalone Windows executables are ready to use:
+
+### 1️⃣ Download
+👉 **[Download Latest Release (`wemod-pro-unlocker-windows-x64.zip`)](https://github.com/Allain-afk/wemod-pro-unlocker/releases/latest)**
+
+### 2️⃣ Usage
+1. Extract `wemod-pro-unlocker-windows-x64.zip`.
+2. Run `wemod-pro-unlocker.exe` (or `updater.exe` to check for updates).
+
 ---
 
 ## 📦 Features & Architecture
@@ -13,19 +24,6 @@ This repository consists of two modular components built with system languages f
 
 - **CLI (`cli/`)**: Written in **Rust (2021 edition)**. Patches WeMod files and application assets.
 - **Updater (`updater/`)**: Written in **Go**. Handles automatic process management and binary downloads from GitHub Releases.
-
----
-
-## ⬇️ Download Pre-built Binaries
-
-Pre-compiled, standalone executables are automatically generated via GitHub Actions for every release:
-
-- **[Download Latest Release Binaries](https://github.com/Allain-afk/wemod-pro-unlocker/releases/latest)**
-
-Each release contains:
-- `wemod-pro-unlocker.exe` (Rust CLI)
-- `updater.exe` (Go Updater)
-- `wemod-pro-unlocker-windows-x64.zip` (Complete Release Package)
 
 ---
 
