@@ -1,0 +1,10 @@
+# Build artifacts directory
+dist/
+
+# Rust build output
+cli/target/
+
+# OS specific files
+Thumbs.db
+Desktop.ini
+.DS_Store
