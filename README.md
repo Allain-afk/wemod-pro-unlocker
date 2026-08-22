@@ -5,16 +5,27 @@
   <p>Unlocks WeMod Pro functionality locally with lightweight Rust & Go binaries.</p>
 </div>
 
-## 🚀 Quick Start (Download Executables Directly)
+## 📖 How to Use
 
-You do **not** need to build from source! Pre-compiled, standalone Windows executables are ready to use:
+Follow these simple steps to use the unlocker:
 
-### 1️⃣ Download
-👉 **[Download Latest Release (`wemod-pro-unlocker-windows-x64.zip`)](https://github.com/Allain-afk/wemod-pro-unlocker/releases/latest)**
+### 1️⃣ Step 1: Install Wand / WeMod
+Make sure you have Wand (or WeMod) installed from the official/original source:
+- 🌐 Official Website: [https://wand.com](https://wand.com)
+- 📥 Official Download: [https://wand.com/download](https://wand.com/download)
 
-### 2️⃣ Usage
-1. Extract `wemod-pro-unlocker-windows-x64.zip`.
-2. Run `wemod-pro-unlocker.exe` (or `updater.exe` to check for updates).
+### 2️⃣ Step 2: Log In to Your Account
+- Open the Wand / WeMod application.
+- Log in normally with your account credentials.
+
+### 3️⃣ Step 3: Download & Run the Unlocker
+1. Download the latest release: 👉 **[Download Latest Release (`wemod-pro-unlocker-windows-x64.zip`)](https://github.com/Allain-afk/wemod-pro-unlocker/releases/latest)**
+2. Extract the downloaded `.zip` file.
+3. Run `wemod-pro-unlocker.exe`.
+   - *Note: The tool will automatically locate your installation, close running processes, and apply the Pro patch.*
+
+### 4️⃣ Step 4: Launch Wand / WeMod
+- Open Wand / WeMod again. Your Pro features are now enabled!
 
 ---
 
