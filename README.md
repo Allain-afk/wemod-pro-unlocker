@@ -27,6 +27,23 @@ Make sure you have Wand (or WeMod) installed from the official/original source:
 ### 4️⃣ Step 4: Launch Wand / WeMod
 - Open Wand / WeMod again. Your Pro features are now enabled!
 
+> [!TIP]
+> **After App Updates**: Whenever Wand/WeMod automatically updates to a new version, simply run `wemod-pro-unlocker.exe` again to patch the new version.
+
+---
+
+## ⚙️ Advanced Configuration (CLI Options)
+
+If you installed WeMod in a custom location or want to pass custom parameters, you can run the executable from CMD / PowerShell with the following options:
+
+| Flag / Option | Description | Example |
+|---|---|---|
+| `--wemod-dir <path>` | Path to custom WeMod/Wand directory (Default: `%LOCALAPPDATA%\WeMod`) | `--wemod-dir "D:\Games\WeMod"` |
+| `--wemod-version <version>` | Specific version to patch (Default: latest detected version) | `--wemod-version "8.3.6"` |
+| `--account <json>` | Custom account metadata override | `--account "username:'pro',email:'test@test.com'"` |
+| `-no-update` / `-offline` | Skip checking for unlocker updates on launch | `-offline` |
+| `-v` | Display the unlocker version | `-v` |
+
 ---
 
 ## 📦 Features & Architecture
