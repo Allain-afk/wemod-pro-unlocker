@@ -8,10 +8,6 @@ Write-Host " Building WeMod Pro Unlocker Artifacts  " -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 # 1. Check prerequisites
-$machinePath = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
-$userPath = [System.Environment]::GetEnvironmentVariable('Path', 'User')
-$env:Path = "C:\mingw64\bin;$userPath;$machinePath;$env:Path"
-
 $cargo = Get-Command cargo -ErrorAction SilentlyContinue
 $go = Get-Command go -ErrorAction SilentlyContinue
 
@@ -68,5 +64,5 @@ Compress-Archive -Path "$distDir\wemod-pro-unlocker.exe", "$distDir\updater.exe"
 Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host " Build Completed Successfully!          " -ForegroundColor Cyan
 Write-Host " Output files location: $distDir        " -ForegroundColor Cyan
-Get-ChildItem -Path $distDir | Select-Object Name, @{Name="Size (KB)"; Expression={[math]::Round($_.Length / 1KB, 2)}} | Format-Table -AutoSize
+Get-ChildItem -Path $distDir | Select-Name Name, @{Name="Size (KB)"; Expression={[math]::Round($_.Length / 1KB, 2)}} | Format-Table -AutoSize
 Write-Host "========================================" -ForegroundColor Cyan
