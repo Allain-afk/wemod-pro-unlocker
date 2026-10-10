@@ -72,6 +72,12 @@ func getLatestReleaseURL() *string {
 		os.Exit(1)
 	}
 
+	for _, asset := range assets {
+		if asset.GetName() == "wemod-pro-unlocker.exe" {
+			return asset.BrowserDownloadURL
+		}
+	}
+
 	return assets[0].BrowserDownloadURL
 }
 
