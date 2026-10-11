@@ -41,6 +41,7 @@ If you installed WeMod in a custom location or want to pass custom parameters, y
 | `--wemod-dir <path>` | Path to custom WeMod/Wand directory (Default: `%LOCALAPPDATA%\WeMod`) | `--wemod-dir "D:\Games\WeMod"` |
 | `--wemod-version <version>` | Specific version to patch (Default: latest detected version) | `--wemod-version "8.3.6"` |
 | `--account <json>` | Custom account metadata override | `--account "username:'pro',email:'test@test.com'"` |
+| `--creator` | Enable creator mode (optional, for trainer creators) | `--creator` |
 | `-no-update` / `-offline` | Skip checking for unlocker updates on launch | `-offline` |
 | `-v` | Display the unlocker version | `-v` |
 

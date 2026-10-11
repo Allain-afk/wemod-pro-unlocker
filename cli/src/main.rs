@@ -22,11 +22,11 @@ fn patch(extracted_resource_dir: PathBuf, opts: &HashMap<String, String>) -> std
 
     println!("Done.");
 
-    println!("Enabling creator mode...");
-
-    patches::patch_creator_mode(extracted_resource_dir.clone());
-
-    println!("Done.");
+    if opts.contains_key("creator") {
+        println!("Enabling creator mode...");
+        patches::patch_creator_mode(extracted_resource_dir.clone());
+        println!("Done.");
+    }
 
     println!("Patching vendor bundle...");
 
@@ -42,6 +42,7 @@ fn patch(extracted_resource_dir: PathBuf, opts: &HashMap<String, String>) -> std
 
     Ok(())
 }
+
 
 pub fn err(msg: String) {
     println!("{}", msg.red());
@@ -112,16 +113,26 @@ fn main() -> std::io::Result<()> {
 
     println!("Extracting resources...");
 
+    let unpacked_dir = resource_dir.join("app.asar.unpacked");
+    let unpacked_old = resource_dir.join("app.asar.unpacked.old");
+
     if resource_dir.join("app.asar.old").exists() {
         fs::copy(
             resource_dir.join("app.asar.old"),
             resource_dir.join("app.asar"),
         )?;
+        if unpacked_old.exists() {
+            let _ = fs::remove_dir_all(&unpacked_dir);
+            let _ = files::copy_dir_all(&unpacked_old, &unpacked_dir);
+        }
     } else {
         fs::copy(
             resource_dir.join("app.asar"),
             resource_dir.join("app.asar.old"),
         )?;
+        if unpacked_dir.exists() && !unpacked_old.exists() {
+            let _ = files::copy_dir_all(&unpacked_dir, &unpacked_old);
+        }
     }
 
     asar::run(
@@ -137,12 +148,28 @@ fn main() -> std::io::Result<()> {
 
     let extracted_resource_dir = resource_dir.join("app");
 
+    // Copy original unpacked files into the extracted `app` directory so that
+    // when `asar pack ... --unpack-dir static/unpacked` runs, the unpacked binaries
+    // (such as WeModAuxiliaryService.exe and TrainerLib) exist in app/static/unpacked
+    // and are repacked properly into app.asar.unpacked instead of being wiped out!
+    if unpacked_dir.exists() {
+        let _ = files::copy_dir_all(&unpacked_dir, &extracted_resource_dir);
+    } else if unpacked_old.exists() {
+        let _ = files::copy_dir_all(&unpacked_old, &extracted_resource_dir);
+    } else {
+        println!(
+            "{}",
+            "Notice: app.asar.unpacked not found. If game mod loading fails, reinstall WeMod from wand.com/wemod.com to restore auxiliary service binaries."
+                .yellow()
+        );
+    }
+
     patch(extracted_resource_dir.clone(), &opts)?;
 
     println!("Repacking resources...");
 
     asar::run(
-        resource_dir,
+        resource_dir.clone(),
         vec![
             "pack".to_string(),
             "app".to_string(),
@@ -153,11 +180,24 @@ fn main() -> std::io::Result<()> {
     );
 
     println!("Done.");
-    println!("Disabling asar integrity check...");
 
-    fuse::disable_asar_integrity(wemod_version_folder_for_fuse);
+    // Preserve any original unpacked files if missing after pack
+    if unpacked_old.exists() && unpacked_dir.exists() {
+        let _ = files::copy_dir_all(&unpacked_old, &unpacked_dir);
+    }
 
+    println!("Updating embedded asar integrity hash...");
+    fuse::update_embedded_asar_hash(&wemod_version_folder_for_fuse, &resource_dir.join("app.asar"));
     println!("Done.");
+
+    println!("Patching auxiliary service integrity checks...");
+    fuse::patch_auxiliary_service(&resource_dir);
+    println!("Done.");
+
+    println!("Disabling asar integrity check...");
+    fuse::disable_asar_integrity(wemod_version_folder_for_fuse);
+    println!("Done.");
+
     println!("Cleaning up...");
 
     fs::remove_dir_all(extracted_resource_dir).expect("failed to remove extracted resources.");
